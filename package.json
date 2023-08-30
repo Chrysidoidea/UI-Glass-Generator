@@ -1,0 +1,36 @@
+{
+  "name": "glass-effect-generator",
+  "version": "1.0.0",
+  "description": "Create customizable glass-like UI elements in React. Adjust properties like color, blur, and border through a user-friendly interface. See your styles and elements in real-time.",
+  "main": "index.tsx",
+  "homepage": "https://chrysidoidea.github.io/UI-Glass-Generator/",
+  "scripts": {
+    "dev": "webpack serve",
+    "build": "webpack",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d ."
+  },
+  "keywords": [],
+  "author": "Chrysidoidea",
+  "license": "MIT",
+  "dependencies": {
+    "@emotion/is-prop-valid": "^1.2.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "styled-components": "^6.0.7"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.22.11",
+    "@babel/preset-env": "^7.22.10",
+    "@babel/preset-react": "^7.22.5",
+    "@babel/preset-typescript": "^7.22.11",
+    "@babel/register": "^7.22.5",
+    "@types/node": "^20.5.6",
+    "babel-loader": "^9.1.3",
+    "gh-pages": "^6.0.0",
+    "html-webpack-plugin": "^5.5.3",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  }
+}
