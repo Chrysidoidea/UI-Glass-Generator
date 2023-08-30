@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Create customizable glass-like UI elements in React. Adjust properties like color, blur, and border through a user-friendly interface. See your styles and elements in real-time.",
   "main": "index.tsx",
-  "homepage": "https://chrysidoidea.github.io/UI-Glass-Generator/",
+  "homepage": "https://Chrysidoidea.github.io/UI-Glass-Generator",
   "scripts": {
     "dev": "webpack serve",
     "build": "webpack",
