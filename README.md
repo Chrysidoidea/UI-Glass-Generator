@@ -2,7 +2,7 @@
 
 This is a React app that allows you to generate and customize glass-like UI elements with dynamic properties. The app provides a user interface to adjust properties such as background color, blur, and border, and it displays the generated UI elements along with their CSS styles.
 
-## [Click here to access the live app](https://github.com/your-username/your-repo)
+## [Click here to access the live app](https://chrysidoidea.github.io/UI-Glass-Generator/)
 
 ## Features
 
