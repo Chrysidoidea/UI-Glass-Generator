@@ -12,6 +12,9 @@ module.exports = {
         extensions: [".ts", ".tsx", ".js"]
     },
     devtool: "source-map",
+    devServer: {
+        historyApiFallback: true,
+    },
     module: {
         rules: [
             {
