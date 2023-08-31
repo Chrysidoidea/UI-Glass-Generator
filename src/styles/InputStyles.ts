@@ -136,6 +136,10 @@ export const CopyButton = styled.button<CopyButtonType>`
     border: none;
     text-transform: uppercase;
 
+    @media ${device.laptop} {
+        font-size: 1rem;
+    };
+
     @media ${device.desktop} {
         padding: 2rem 4rem;
         font-size: 2rem;
@@ -151,9 +155,14 @@ export const CopyButton = styled.button<CopyButtonType>`
         rotate: 40deg;
         left: -7.5rem;
         bottom: -1rem;
+
+        @media ${device.laptop} {
+            left: -8.5rem;
+            bottom: -2rem;
+        };
             
         @media ${device.desktop} {
-            left: -10.5rem;
+            left: -13.5rem;
             bottom: -3rem;
         };
     };
@@ -165,6 +174,10 @@ export const CopyButton = styled.button<CopyButtonType>`
             left: 9rem;
             bottom: 2rem;
 
+            @media ${device.laptop} {
+            left: 6rem;
+            bottom: 4rem;
+        };
             @media ${device.desktop} {
             left: 11rem;
             bottom: 5rem;
