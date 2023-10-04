@@ -4334,8 +4334,8 @@ __webpack_require__.r(__webpack_exports__);
 //Main control panel
 var GlassGeneratorComponent = function GlassGeneratorComponent() {
   var _useGlassGeneratorCon = (0,_GlassGeneratorContext__WEBPACK_IMPORTED_MODULE_2__.useGlassGeneratorContext)(),
-    transperensy = _useGlassGeneratorCon.transperensy,
-    setTransperensy = _useGlassGeneratorCon.setTransperensy,
+    transparency = _useGlassGeneratorCon.transparency,
+    settransparency = _useGlassGeneratorCon.settransparency,
     blur = _useGlassGeneratorCon.blur,
     setBlur = _useGlassGeneratorCon.setBlur,
     color = _useGlassGeneratorCon.color,
@@ -4356,12 +4356,12 @@ var GlassGeneratorComponent = function GlassGeneratorComponent() {
       console.error('Unable to copy CSS content', err);
     });
   };
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "transperensy", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_styles_InputStyles__WEBPACK_IMPORTED_MODULE_1__.InputRangeStyled, {
-    value: transperensy,
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "transparency", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_styles_InputStyles__WEBPACK_IMPORTED_MODULE_1__.InputRangeStyled, {
+    value: transparency,
     onChange: function onChange(e) {
-      return setTransperensy(e.target.value);
+      return settransparency(e.target.value);
     },
-    id: "transperensy"
+    id: "transparency"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "blur", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_styles_InputStyles__WEBPACK_IMPORTED_MODULE_1__.InputRangeStyled, {
     value: blur,
     onChange: function onChange(e) {
@@ -4658,8 +4658,7 @@ var device = {
   tablet: "(min-width: ".concat(size.tablet, ")"),
   laptop: "(min-width: ".concat(size.laptop, ")"),
   laptopL: "(min-width: ".concat(size.laptopL, ")"),
-  desktop: "(min-width: ".concat(size.desktop, ")"),
-  desktopL: "(min-width: ".concat(size.desktop, ")")
+  desktop: "(min-width: ".concat(size.desktop, ")")
 };
 
 /***/ }),

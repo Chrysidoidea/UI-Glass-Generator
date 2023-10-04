@@ -6,8 +6,8 @@ type GlassGeneratorProviderType = {
 };
 
 type ContextValueType = {
-    transperensy: number;
-    setTransperensy: React.Dispatch<React.SetStateAction<number>>;
+    transparency: number;
+    settransparency: React.Dispatch<React.SetStateAction<number>>;
     blur: number;
     setBlur: React.Dispatch<React.SetStateAction<number>>;
     color: string;
@@ -24,13 +24,13 @@ type ContextValueType = {
 export const GlassGeneratorContext = createContext<ContextValueType | undefined>(undefined);
 
 export const GlassGeneratorProvider: React.FC<GlassGeneratorProviderType> = ({children}) => {
-    const [transperensy, setTransperensy] = useState<number>(10);
+    const [transparency, settransparency] = useState<number>(10);
     const [blur, setBlur] = useState<number>(5);
     const [color, setColor] = useState<string>('#ffffff');
     const [outline, setOutline] = useState<number>(0);
     const [copied, setCopied] = useState<boolean>(false);
 
-    const bGColor = `rgba(${hexToRGB(color).r},${hexToRGB(color).g},${hexToRGB(color).b},${transparensyConverter(transperensy)})`;
+    const bGColor = `rgba(${hexToRGB(color).r},${hexToRGB(color).g},${hexToRGB(color).b},${transparensyConverter(transparency)})`;
     const blurConverted = `blur(${blurConverter(blur)}px)`;
     const borderConverted = `1px solid rgba(255, 255, 255, ${transparensyConverter(outline)})`;
     
@@ -59,8 +59,8 @@ export const GlassGeneratorProvider: React.FC<GlassGeneratorProviderType> = ({ch
     }, [copied])
 
     const contextValue:ContextValueType = {
-        transperensy,
-        setTransperensy,
+        transparency,
+        settransparency,
         blur,
         setBlur,
         color,
