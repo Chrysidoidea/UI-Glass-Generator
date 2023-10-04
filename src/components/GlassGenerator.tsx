@@ -5,8 +5,8 @@ import { useGlassGeneratorContext } from './GlassGeneratorContext';
 //Main control panel
 export const GlassGeneratorComponent: React.FC = () => {
     const {
-        transperensy,
-        setTransperensy,
+        transparency,
+        settransparency,
         blur,
         setBlur,
         color,
@@ -44,11 +44,11 @@ export const GlassGeneratorComponent: React.FC = () => {
 
     return (
         <>
-        <label>transperensy
+        <label>transparency
           <InputRangeStyled 
-            value={transperensy}
-            onChange={(e: { target: { value: number; }; }) => setTransperensy(e.target.value)}
-            id='transperensy'
+            value={transparency}
+            onChange={(e: { target: { value: number; }; }) => settransparency(e.target.value)}
+            id='transparency'
           />
         </label>
 
