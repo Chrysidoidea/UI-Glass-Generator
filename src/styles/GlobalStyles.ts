@@ -1,4 +1,4 @@
-import {createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
 :root {
@@ -20,13 +20,11 @@ body {
     padding: 0;
     font-family: 'Open Sans', sans-serif;
     box-sizing: border-box;
-    overflow: hidden;
+    overflow: scroll;
     user-select: none;
-
-    
 };
 
 label {
   text-transform: uppercase;
 };
-`
+`;

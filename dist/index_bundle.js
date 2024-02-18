@@ -4421,8 +4421,8 @@ var GlassGeneratorProvider = function GlassGeneratorProvider(_ref) {
   var children = _ref.children;
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(10),
     _useState2 = _slicedToArray(_useState, 2),
-    transperensy = _useState2[0],
-    setTransperensy = _useState2[1];
+    transparency = _useState2[0],
+    settransparency = _useState2[1];
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(5),
     _useState4 = _slicedToArray(_useState3, 2),
     blur = _useState4[0],
@@ -4439,7 +4439,7 @@ var GlassGeneratorProvider = function GlassGeneratorProvider(_ref) {
     _useState10 = _slicedToArray(_useState9, 2),
     copied = _useState10[0],
     setCopied = _useState10[1];
-  var bGColor = "rgba(".concat((0,_utils_HelperFunctions__WEBPACK_IMPORTED_MODULE_1__.hexToRGB)(color).r, ",").concat((0,_utils_HelperFunctions__WEBPACK_IMPORTED_MODULE_1__.hexToRGB)(color).g, ",").concat((0,_utils_HelperFunctions__WEBPACK_IMPORTED_MODULE_1__.hexToRGB)(color).b, ",").concat((0,_utils_HelperFunctions__WEBPACK_IMPORTED_MODULE_1__.transparensyConverter)(transperensy), ")");
+  var bGColor = "rgba(".concat((0,_utils_HelperFunctions__WEBPACK_IMPORTED_MODULE_1__.hexToRGB)(color).r, ",").concat((0,_utils_HelperFunctions__WEBPACK_IMPORTED_MODULE_1__.hexToRGB)(color).g, ",").concat((0,_utils_HelperFunctions__WEBPACK_IMPORTED_MODULE_1__.hexToRGB)(color).b, ",").concat((0,_utils_HelperFunctions__WEBPACK_IMPORTED_MODULE_1__.transparensyConverter)(transparency), ")");
   var blurConverted = "blur(".concat((0,_utils_HelperFunctions__WEBPACK_IMPORTED_MODULE_1__.blurConverter)(blur), "px)");
   var borderConverted = "1px solid rgba(255, 255, 255, ".concat((0,_utils_HelperFunctions__WEBPACK_IMPORTED_MODULE_1__.transparensyConverter)(outline), ")");
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
@@ -4462,8 +4462,8 @@ var GlassGeneratorProvider = function GlassGeneratorProvider(_ref) {
     }
   }, [copied]);
   var contextValue = {
-    transperensy: transperensy,
-    setTransperensy: setTransperensy,
+    transparency: transparency,
+    settransparency: settransparency,
     blur: blur,
     setBlur: setBlur,
     color: color,
