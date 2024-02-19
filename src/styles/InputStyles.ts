@@ -1,5 +1,4 @@
 import styled, { css } from "styled-components";
-import { device } from "../utils/WindowUtils";
 
 //Color Input Element
 export const InputColorStyled = styled.input.attrs({ type: "color" })`

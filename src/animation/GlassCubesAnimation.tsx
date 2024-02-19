@@ -37,10 +37,9 @@ const GlassCube = styled.div<FallAnimationProps>`
     width: 7rem;
     height: 6rem;
   }
-
 `;
 //Animated Cubes generator
-export const GlassCubAnimation = React.memo(() => {
+export const GlassCubAnimation = () => {
   const numberOfCubes = 12;
 
   return (
@@ -61,4 +60,4 @@ export const GlassCubAnimation = React.memo(() => {
       })}
     </>
   );
-});
+};

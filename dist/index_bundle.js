@@ -4285,13 +4285,13 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 var fallAnimation = (0,styled_components__WEBPACK_IMPORTED_MODULE_2__.keyframes)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    0% {\n        transform:  translateY(-120vh) translateX(var(--startX, 0px)) ;  \n    }\n    100% {\n\t\ttransform: translateY(120vh) translateX(var(--endX, 0px)) ;\n    }\n"])));
 //Falling background cubes
-var GlassCube = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n    position: absolute;\n    top: -8rem;\n    width: 5rem;\n    height: 4rem;\n    border-radius: .4rem;\n    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\n    animation: ", " 11s linear infinite;\n    animation-delay: ", "s;\n    --startX: ", "px;\n    --endX: ", "px;\n    z-index: -1;\n    background-color: var(--dynamic-bg-color);\n    backdrop-filter: var(--dynamic-backdrop-filter);\n    border: var(--dynamic-border);\n\n    @media ", " {\n        width: 7rem;\n        height: 6rem;\n    };\n\n    @media ", " {\n        top: -9.5rem;\n        border-radius: .7rem;\n        width: 10rem;\n        height: 9rem;\n    };\n\n"])), fallAnimation, function (props) {
+var GlassCube = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  position: absolute;\n  top: -8rem;\n  width: 5rem;\n  height: 4rem;\n  border-radius: 0.4rem;\n  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\n  animation: ", " 11s linear infinite;\n  animation-delay: ", "s;\n  --startX: ", "px;\n  --endX: ", "px;\n  z-index: -1;\n  background-color: var(--dynamic-bg-color);\n  backdrop-filter: var(--dynamic-backdrop-filter);\n  border: var(--dynamic-border);\n\n  @media ", " {\n    width: 7rem;\n    height: 6rem;\n  }\n\n"])), fallAnimation, function (props) {
   return props.$delay;
 }, function (props) {
   return props.$start;
 }, function (props) {
   return props.$end;
-}, _utils_WindowUtils__WEBPACK_IMPORTED_MODULE_1__.device.laptop, _utils_WindowUtils__WEBPACK_IMPORTED_MODULE_1__.device.desktop);
+}, _utils_WindowUtils__WEBPACK_IMPORTED_MODULE_1__.device.laptop);
 //Animated Cubes generator
 var GlassCubAnimation = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().memo(function () {
   var numberOfCubes = 12;
@@ -4347,15 +4347,25 @@ var GlassGeneratorComponent = function GlassGeneratorComponent() {
     borderConverted = _useGlassGeneratorCon.borderConverted,
     copied = _useGlassGeneratorCon.copied,
     setCopied = _useGlassGeneratorCon.setCopied;
-  var cssContent = "\n    background-color: ".concat(bGColor, ";\n    backdrop-filter: ").concat(blurConverted, ";\n    -webkit-backdrop-filter: ").concat(blurConverted, ";\n    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);\n    border-radius: .4rem;\n    ").concat(outline !== 0 ? "border: ".concat(borderConverted, ";") : '', "\n    ");
+  var cssContent = "\n    background-color: ".concat(bGColor, ";\n    backdrop-filter: ").concat(blurConverted, ";\n    -webkit-backdrop-filter: ").concat(blurConverted, ";\n    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);\n    border-radius: .4rem;\n    ").concat(outline !== 0 ? "border: ".concat(borderConverted, ";") : "", "\n    ");
   var handleCopy = function handleCopy() {
-    var textToCopy = cssContent.replace(/^\s+|\s+$/gm, '');
+    var textToCopy = cssContent.replace(/^\s+|\s+$/gm, "");
     navigator.clipboard.writeText(textToCopy).then(function () {
       setCopied(true);
     })["catch"](function (err) {
-      console.error('Unable to copy CSS content', err);
+      console.error("Unable to copy CSS content", err);
     });
   };
+  function symbolsBeforeColon(str) {
+    var regex = /^([^:]+):/;
+    var match = str.match(regex);
+    return match ? match[1] + ":" : null;
+  }
+  function symbolsAfterColon(str) {
+    var regex = /:([^:]+)$/;
+    var match = str.match(regex);
+    return match ? match[1] : null;
+  }
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "transparency", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_styles_InputStyles__WEBPACK_IMPORTED_MODULE_1__.InputRangeStyled, {
     value: transparency,
     onChange: function onChange(e) {
@@ -4379,10 +4389,10 @@ var GlassGeneratorComponent = function GlassGeneratorComponent() {
       return setOutline(parseInt(e.target.value, 10));
     },
     id: "outline"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_styles_InputStyles__WEBPACK_IMPORTED_MODULE_1__.CssCodeWrapper, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "CSS"), cssContent.split('\n').map(function (line, index) {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_styles_InputStyles__WEBPACK_IMPORTED_MODULE_1__.CssCodeWrapper, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, cssContent.split("\n").map(function (line, index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
       key: index
-    }, line);
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_styles_InputStyles__WEBPACK_IMPORTED_MODULE_1__.CssTextSpan, null, symbolsBeforeColon(line)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_styles_InputStyles__WEBPACK_IMPORTED_MODULE_1__.CssTextSpan2, null, symbolsAfterColon(line)));
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_styles_InputStyles__WEBPACK_IMPORTED_MODULE_1__.CopyButton, {
     onClick: function onClick() {
       return handleCopy();
@@ -4427,7 +4437,7 @@ var GlassGeneratorProvider = function GlassGeneratorProvider(_ref) {
     _useState4 = _slicedToArray(_useState3, 2),
     blur = _useState4[0],
     setBlur = _useState4[1];
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('#ffffff'),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("#ffffff"),
     _useState6 = _slicedToArray(_useState5, 2),
     color = _useState6[0],
     setColor = _useState6[1];
@@ -4443,13 +4453,13 @@ var GlassGeneratorProvider = function GlassGeneratorProvider(_ref) {
   var blurConverted = "blur(".concat((0,_utils_HelperFunctions__WEBPACK_IMPORTED_MODULE_1__.blurConverter)(blur), "px)");
   var borderConverted = "1px solid rgba(255, 255, 255, ".concat((0,_utils_HelperFunctions__WEBPACK_IMPORTED_MODULE_1__.transparensyConverter)(outline), ")");
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    document.documentElement.style.setProperty('--dynamic-bg-color', bGColor);
+    document.documentElement.style.setProperty("--dynamic-bg-color", bGColor);
   }, [bGColor]);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    document.documentElement.style.setProperty('--dynamic-backdrop-filter', blurConverted);
+    document.documentElement.style.setProperty("--dynamic-backdrop-filter", blurConverted);
   }, [blurConverted]);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    document.documentElement.style.setProperty('--dynamic-border', borderConverted);
+    document.documentElement.style.setProperty("--dynamic-border", borderConverted);
   }, [borderConverted]);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (copied) {
@@ -4483,7 +4493,7 @@ var GlassGeneratorProvider = function GlassGeneratorProvider(_ref) {
 var useGlassGeneratorContext = function useGlassGeneratorContext() {
   var context = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(GlassGeneratorContext);
   if (context === undefined) {
-    throw new Error('useGlassGeneratorContext have to use with GlassGeneratorProvider');
+    throw new Error("useGlassGeneratorContext have to use with GlassGeneratorProvider");
   }
   return context;
 };
@@ -4516,23 +4526,23 @@ var waveSvg = "\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 1440 32
 var waveTwoSvg = "\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 1440 320\"><path fill=\"#2979AE\" fill-opacity=\"1\" d=\"M0,32L21.8,32C43.6,32,87,32,131,80C174.5,128,218,224,262,266.7C305.5,309,349,299,393,266.7C436.4,235,480,181,524,165.3C567.3,149,611,171,655,154.7C698.2,139,742,85,785,96C829.1,107,873,181,916,218.7C960,256,1004,256,1047,218.7C1090.9,181,1135,107,1178,69.3C1221.8,32,1265,32,1309,26.7C1352.7,21,1396,11,1418,5.3L1440,0L1440,320L1418.2,320C1396.4,320,1353,320,1309,320C1265.5,320,1222,320,1178,320C1134.5,320,1091,320,1047,320C1003.6,320,960,320,916,320C872.7,320,829,320,785,320C741.8,320,698,320,655,320C610.9,320,567,320,524,320C480,320,436,320,393,320C349.1,320,305,320,262,320C218.2,320,175,320,131,320C87.3,320,44,320,22,320L0,320Z\"></path></svg>";
 
 //Main Body
-var AppStyled = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    height: 100vh;\n    width: 100vw;\n    padding-top: 2rem;\n    background: var(--background-gradient);\n    display: grid;\n    place-content: center;\n    color: var(--text-color);\n    position: relative;\n    overflow: hidden;\n    z-index: 0;\n"])));
+var AppStyled = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  min-height: 100dvh;\n  width: 100vw;\n  padding-top: 2rem;\n  background: var(--background-gradient);\n  display: grid;\n  place-content: center;\n  color: var(--text-color);\n  position: relative;\n  overflow-x: hidden;\n  overflow-y: scroll;\n  z-index: 0;\n"])));
 
 //Main Page Bottom Waves
 var waveMixin = function waveMixin(svgData, shadowOpacity) {
-  return (0,styled_components__WEBPACK_IMPORTED_MODULE_1__.css)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n  height: 8rem;\n  background: url(\"data:image/svg+xml,", "\");\n  background-repeat: no-repeat;\n  background-size: cover;\n  filter: drop-shadow(0px 10px 20px ", ");\n\n  @media ", " {\n    height: 10.25rem;\n  };\n  @media ", " {\n    min-height: 14.9rem;\n  };\n  @media ", " {\n    height: 16.5rem;\n  }; \n  @media ", " {\n    height: 21.5rem;\n  }; \n  @media ", " {\n    height: 40.5rem;\n  }; \n"])), encodeURIComponent(svgData), shadowOpacity, _utils_WindowUtils__WEBPACK_IMPORTED_MODULE_0__.device.mobileS, _utils_WindowUtils__WEBPACK_IMPORTED_MODULE_0__.device.mobileL, _utils_WindowUtils__WEBPACK_IMPORTED_MODULE_0__.device.tablet, _utils_WindowUtils__WEBPACK_IMPORTED_MODULE_0__.device.laptopL, _utils_WindowUtils__WEBPACK_IMPORTED_MODULE_0__.device.desktop);
+  return (0,styled_components__WEBPACK_IMPORTED_MODULE_1__.css)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n  height: 30vh;\n  background: url(\"data:image/svg+xml,", "\");\n  background-repeat: no-repeat;\n  background-size: cover;\n  filter: drop-shadow(0px 10px 20px ", ");\n"])), encodeURIComponent(svgData), shadowOpacity);
 };
 var Wave = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n  ", ";\n  z-index: 1;\n"])), waveMixin(waveSvg, "rgba(0, 0, 0, 0.9)"));
 var SecondWave = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n  ", ";\n  z-index: -1;\n"])), waveMixin(waveTwoSvg, "rgba(0, 0, 0, 0.3)"));
 
 //Wrapper for main text
-var TitleWrapper = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n    display: block;\n    position: relative;\n    z-index: 9;\n\n//Main text\n    &::before {\n        content: 'Glass UI generator';\n        position: absolute;\n        text-transform: uppercase;\n        color: var(--dark-blue);\n        font-size: 1.6rem;\n        width: 150%;\n        text-align: center;\n        top: -5rem;\n        left: 50%;\n        transform: translateX(-50%);\n        padding: .5rem .5rem;\n        background-color: transparent;\n        border-radius: .4rem;\n\n        @media ", " {\n            font-size: 2.5rem;\n            top: -8rem;\n        };\n\n        @media ", " {\n            top: -11rem;\n            font-size: 4.5rem;\n            width: 200%;\n        };\n\n        @media ", " {\n            top: -18rem;\n            font-size: 8.5rem;\n            width: 200%;\n        };\n     };\n\n\n"])), _utils_WindowUtils__WEBPACK_IMPORTED_MODULE_0__.device.laptop, _utils_WindowUtils__WEBPACK_IMPORTED_MODULE_0__.device.laptopL, _utils_WindowUtils__WEBPACK_IMPORTED_MODULE_0__.device.desktop);
+var TitleWrapper = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n  position: relative;\n  z-index: 9;\n\n  //Main text\n  &::before {\n    content: \"Glass UI generator\";\n    position: absolute;\n    text-transform: uppercase;\n    color: var(--dark-blue);\n    font-size: clamp(2rem, 4vw, 30rem);\n    font-weight: 900;\n    white-space: nowrap;\n    text-align: center;\n    top: -6rem;\n    left: 50%;\n    transform: translateX(-50%);\n\n    @media (", ") {\n      top: -9rem;\n    }\n    @media (", ") {\n      top: -12rem;\n    }\n  }\n"])), _utils_WindowUtils__WEBPACK_IMPORTED_MODULE_0__.device.tablet, _utils_WindowUtils__WEBPACK_IMPORTED_MODULE_0__.device.laptop);
 
 //Glass element to introduce dynamic styling
-var GlassCoreExample = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["\n    position: absolute;\n    top: -5rem;\n    left: 50%;\n    transform: translateX(-50%) rotate(-2deg);\n    width: 13rem;\n    height: 3rem;\n    border-radius: .3rem;\n    background-color: var(--dynamic-bg-color);\n    backdrop-filter: var(--dynamic-backdrop-filter);\n    border: var(--dynamic-border);\n\n    @media ", " {\n            top: -8rem;\n            height: 4.5rem;\n            width: 20rem;\n    };\n\n    @media ", " {\n            top: -11rem;\n            height: 7.5rem;\n            width: 37rem;\n            border-radius: .5rem;\n    };\n\n    @media ", " {\n            top: -18rem;\n            height: 13.5rem;\n            width: 70rem;\n            border-radius: 1rem;\n\n    };\n"])), _utils_WindowUtils__WEBPACK_IMPORTED_MODULE_0__.device.laptop, _utils_WindowUtils__WEBPACK_IMPORTED_MODULE_0__.device.laptopL, _utils_WindowUtils__WEBPACK_IMPORTED_MODULE_0__.device.desktop);
+var GlassCoreExample = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["\n  position: absolute;\n  top: -6.5rem;\n  left: 50%;\n  transform: translateX(-50%) rotate(-2deg);\n  width: clamp(20rem, 40vw, 90rem);\n  height: clamp(4rem, 8vw, 11rem);\n  border-radius: 0.3rem;\n  background-color: var(--dynamic-bg-color);\n  backdrop-filter: var(--dynamic-backdrop-filter);\n  -webkit-backdrop-filter: var(--dynamic-backdrop-filter);\n  border: var(--dynamic-border);\n\n  @media (", ") {\n    top: -9rem;\n  }\n  @media (", ") {\n    top: -12rem;\n  }\n"])), _utils_WindowUtils__WEBPACK_IMPORTED_MODULE_0__.device.tablet, _utils_WindowUtils__WEBPACK_IMPORTED_MODULE_0__.device.laptop);
 
 //Main wrapper for Glass Generator
-var Wrapper = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["\n    display: grid;\n    position: relative;\n    padding: 1rem;\n    width: 70vw;\n    height: 65vh;\n    border-radius: .6rem;\n    background: var(--glass-gradient);\n    backdrop-filter: blur(.5rem); \n    border: 1px solid rgba(255, 255, 255, 0.04);\n    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);\n    transition: 1s;\n    z-index: 10;\n\n    & > label {\n        display: flex;\n        flex-direction: column;\n\n        @media ", " {\n            font-size: 2rem;\n        }\n    };\n\n    & > label:nth-child(4) {\n        margin-bottom: 1rem;\n    };\n    \n    &:hover {\n        background-color: var(--glass-color);\n        box-shadow: 0px 2.5px 7.5px rgba(0, 0, 0, 0.3);\n        scale: .999;\n    };\n\n    @media ", " {\n        width: 50vw;\n        height: 60vh;\n    };\n    @media ", " {\n        width: 50vw;\n        height: 50vh;\n    };\n    @media ", " {\n        width: 40vw;\n        height: 45vh;\n    };\n"])), _utils_WindowUtils__WEBPACK_IMPORTED_MODULE_0__.device.desktop, _utils_WindowUtils__WEBPACK_IMPORTED_MODULE_0__.device.tablet, _utils_WindowUtils__WEBPACK_IMPORTED_MODULE_0__.device.laptop, _utils_WindowUtils__WEBPACK_IMPORTED_MODULE_0__.device.laptopL);
+var Wrapper = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["\n  display: flex;\n  flex-direction: column;\n  gap: 1rem;\n  position: relative;\n  padding: 1.5rem 1rem;\n  width: clamp(20rem, 70vw, 60rem);\n  height: clamp(21rem, 50vh, 40rem);\n  border-radius: 0.6rem;\n  background: var(--glass-gradient);\n  backdrop-filter: blur(1rem);\n  -webkit-backdrop-filter: blur(1rem);\n  border: 1px solid rgba(255, 255, 255, 0.04);\n  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);\n\n  transition: 1s;\n  z-index: 10;\n\n  & > label {\n    display: flex;\n    align-items: flex-end;\n    flex-direction: column;\n    color: #FFFFFFDC;\n    font-weight: 600;\n  }\n\n  &:hover {\n    background-color: var(--glass-color);\n    backdrop-filter: blur(10rem);\n    -webkit-backdrop-filter: blur(10rem);\n    box-shadow: 0px 2.5px 7.5px rgba(0, 0, 0, 0.3);\n    scale: 0.999;\n  }\n"])));
 
 /***/ }),
 
@@ -4551,7 +4561,7 @@ __webpack_require__.r(__webpack_exports__);
 var _templateObject;
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var GlobalStyles = (0,styled_components__WEBPACK_IMPORTED_MODULE_0__.createGlobalStyle)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n:root {\n  --background-color: #2C3E50; \n  --background-gradient: linear-gradient(to bottom, #1c2331, #394867);\n  --glass-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.025));\n  --glass-color: rgba(255, 255, 255, 0.05);\n  --text-color: #FFFFFF;\n  --light-blue: #0099ff;\n  --dark-blue: #2979AE;\n\n  --dynamic-bg-color: #FFFFFF0E;\n  --dynamic-backdrop-filter: blur(.3rem);\n  --dynamic-border: 1px solid transparent;\n};\n\nbody {\n    margin: 0;\n    padding: 0;\n    font-family: 'Open Sans', sans-serif;\n    box-sizing: border-box;\n    overflow: hidden;\n    user-select: none;\n\n    \n};\n\nlabel {\n  text-transform: uppercase;\n};\n"])));
+var GlobalStyles = (0,styled_components__WEBPACK_IMPORTED_MODULE_0__.createGlobalStyle)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n:root {\n  --background-color: #2C3E50; \n  --background-gradient: linear-gradient(to bottom, #1c2331, #394867);\n  --glass-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.025));\n  --glass-color: rgba(255, 255, 255, 0.05);\n  --text-color: #FFFFFF;\n  --light-blue: #0099ff;\n  --dark-blue: #2979AE;\n\n  --dynamic-bg-color: #FFFFFF0E;\n  --dynamic-backdrop-filter: blur(.3rem);\n  --dynamic-border: 1px solid transparent;\n};\n\nbody {\n    margin: 0;\n    padding: 0;\n    font-family: 'Open Sans', sans-serif;\n    box-sizing: border-box;\n    overflow: scroll;\n    user-select: none;\n};\n\nlabel {\n  text-transform: uppercase;\n};\n"])));
 
 /***/ }),
 
@@ -4566,33 +4576,34 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   CopyButton: () => (/* binding */ CopyButton),
 /* harmony export */   CssCodeWrapper: () => (/* binding */ CssCodeWrapper),
+/* harmony export */   CssTextSpan: () => (/* binding */ CssTextSpan),
+/* harmony export */   CssTextSpan2: () => (/* binding */ CssTextSpan2),
 /* harmony export */   InputColorStyled: () => (/* binding */ InputColorStyled),
 /* harmony export */   InputRangeStyled: () => (/* binding */ InputRangeStyled)
 /* harmony export */ });
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-/* harmony import */ var _utils_WindowUtils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/WindowUtils */ "./src/utils/WindowUtils.ts");
-var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5;
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7;
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-
-
 //Color Input Element
-var InputColorStyled = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].input.attrs({
-  type: 'color'
-})(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    -webkit-appearance: none;\n    -moz-appearance: none;\n    appearance: none;\n    background-color: var(--glass-color);\n    border: none;\n    border-radius: .2rem;\n    width: 100%;\n    cursor: pointer;\n\n    &::-webkit-color-swatch {\n        background-color: transparent;\n        height: .7rem;\n        border-radius: .2rem;\n        width: 100%;\n        align-self: center;\n        transition: .4s;\n\n        @media ", " {\n            height: 1rem;\n            };\n\n        &:hover {\n            height: .9rem;\n\n            @media ", " {\n            height: 1.2rem;\n            };\n        }\n    }\n"])), _utils_WindowUtils__WEBPACK_IMPORTED_MODULE_0__.device.desktop, _utils_WindowUtils__WEBPACK_IMPORTED_MODULE_0__.device.desktop);
+var InputColorStyled = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].input.attrs({
+  type: "color"
+})(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  background-color: var(--glass-color);\n  border: none;\n  border-radius: 0.2rem;\n  width: 100%;\n  cursor: pointer;\n\n  &::-webkit-color-swatch {\n    background-color: var(--dynamic-bg-color);\n    height: 0.7rem;\n    border-radius: 0.2rem;\n    width: 100%;\n    align-self: center;\n    transition: 0.2s;\n\n    &:hover {\n      height: 0.9rem;\n    }\n  }\n"])));
 
 //Range Input Element
-var SliderThumbStyles = (0,styled_components__WEBPACK_IMPORTED_MODULE_1__.css)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n    appearance: none;\n    width: 1.3rem;\n    height: 1.3rem;\n    background-image: radial-gradient(var(--glass-color) 40%, #0099ff 45%);\n    border-radius: .2rem;\n    box-shadow: 0 0 4px rgba(0,0,0,0.4);\n    cursor: pointer;\n\n    @media ", " {\n        width: 2rem;\n        height: 2rem;\n        };\n"])), _utils_WindowUtils__WEBPACK_IMPORTED_MODULE_0__.device.desktop);
-var InputRangeStyled = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].input.attrs({
-  type: 'range'
-})(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n    -webkit-appearance: none;\n    -moz-appearance: none;\n    appearance: none;\n    outline: none;\n    height: .7rem;\n    width: 100%;\n    border-radius: .2rem;\n    box-shadow: 0 0 4px rgba(0,0,0,0.4);\n    background: ", ";\n\n    &::-webkit-slider-thumb {\n    -webkit-appearance: none;\n    ", ";\n    };\n\n    &::-moz-range-thumb {\n    -moz-appearance: none;\n    ", ";\n    };\n\n    @media ", " {\n        height: 1rem;\n        };\n"])), function (props) {
+var SliderThumbStyles = (0,styled_components__WEBPACK_IMPORTED_MODULE_0__.css)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  appearance: none;\n  width: 2rem;\n  height: 1.5rem;\n  background-image: radial-gradient(var(--glass-color) 40%, #0099ff 45%);\n  border-radius: 0.4rem;\n  box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);\n  cursor: pointer;\n"])));
+var InputRangeStyled = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].input.attrs({
+  type: "range"
+})(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  outline: none;\n  height: 0.7rem;\n  width: 100%;\n  border-radius: 0.2rem;\n  box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);\n  background: ", ";\n\n  &::-webkit-slider-thumb {\n    -webkit-appearance: none;\n    background-color: transparent;\n    backdrop-filter: blur(0.1rem);\n    -webkit-backdrop-filter: blur(0.1rem);\n    ", ";\n  }\n\n  &::-moz-range-thumb {\n    -moz-appearance: none;\n    background-color: transparent;\n    backdrop-filter: blur(0.1rem);\n    -webkit-backdrop-filter: blur(0.1rem);\n    ", ";\n  }\n"])), function (props) {
   return "linear-gradient(to right,#2979AE 0%,#2979AE ".concat(props.value, "%,#fff ").concat(props.value, "%,#fff 100%);");
-}, SliderThumbStyles, SliderThumbStyles, _utils_WindowUtils__WEBPACK_IMPORTED_MODULE_0__.device.desktop);
+}, SliderThumbStyles, SliderThumbStyles);
 
 //Wrapper for CSS code snippet and Button
-var CssCodeWrapper = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n    display: grid;\n    grid-template-columns: 1.3fr .7fr;\n\n    @media ", " {\n        grid-template-columns: 1fr 1fr;\n        };\n\n    & > div:first-child {\n        height: 100%;\n        height: 6rem;\n        font-size: .4rem;\n        display: flex;\n        flex-direction: column;\n        align-items: flex-start;\n        justify-content: center;\n\n        @media ", " {\n            font-size: .5rem;\n        };\n        @media ", " {\n            font-size: .7rem;\n        };\n        @media ", " {\n            font-size: 1rem;\n        };\n        @media ", " {\n            font-size: 1.4rem;\n        };\n    };\n\n    & > div:last-child {\n        height: 100%;\n        display: grid;\n        place-content: center;\n    };\n"])), _utils_WindowUtils__WEBPACK_IMPORTED_MODULE_0__.device.desktop, _utils_WindowUtils__WEBPACK_IMPORTED_MODULE_0__.device.mobileM, _utils_WindowUtils__WEBPACK_IMPORTED_MODULE_0__.device.tablet, _utils_WindowUtils__WEBPACK_IMPORTED_MODULE_0__.device.laptop, _utils_WindowUtils__WEBPACK_IMPORTED_MODULE_0__.device.desktop);
+var CssCodeWrapper = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].div(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n  display: flex;\n  margin-top: auto;\n  margin-bottom: .5rem;\n  justify-content: space-between;\n\n  & > div:first-child {\n    font-size: 1.5vh;\n    font-weight: 600;\n    display: flex;\n    flex-direction: column;\n    align-items: flex-start;\n    justify-content: center;\n  }\n\n  & > div:last-child {\n    height: 100%;\n    display: grid;\n    place-content: center;\n  }\n"])));
 //Copy Button
-var CopyButton = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].button(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n    padding: 2rem 1.5rem;\n    background-color: var(--glass-color);\n    color: var(--text-color);\n    font-size: .7rem;\n    border-radius: .4rem;\n    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);\n    transition: .3s;\n    cursor: pointer;\n    position: relative;\n    overflow: hidden;\n    border: none;\n    text-transform: uppercase;\n\n    @media ", " {\n        font-size: 1rem;\n    };\n\n    @media ", " {\n        padding: 2rem 4rem;\n        font-size: 2rem;\n    };\n\n    &:before {\n        content: '';\n        position: absolute;\n        transition: .3s;\n        width: 150%;\n        height: 30%;\n        background-color: #FFFFFF0E;\n        rotate: 40deg;\n        left: -7.5rem;\n        bottom: -1rem;\n\n        @media ", " {\n            left: -8.5rem;\n            bottom: -2rem;\n        };\n            \n        @media ", " {\n            left: -13.5rem;\n            bottom: -3rem;\n        };\n    };\n    \n    &:hover {\n        box-shadow: 0px 2.5px 7.5px rgba(0, 0, 0, 0.3);\n\n        &:before {\n            left: 9rem;\n            bottom: 2rem;\n\n            @media ", " {\n            left: 6rem;\n            bottom: 4rem;\n        };\n            @media ", " {\n            left: 11rem;\n            bottom: 5rem;\n            };\n        };\n\n    };\n"])), _utils_WindowUtils__WEBPACK_IMPORTED_MODULE_0__.device.laptop, _utils_WindowUtils__WEBPACK_IMPORTED_MODULE_0__.device.desktop, _utils_WindowUtils__WEBPACK_IMPORTED_MODULE_0__.device.laptop, _utils_WindowUtils__WEBPACK_IMPORTED_MODULE_0__.device.desktop, _utils_WindowUtils__WEBPACK_IMPORTED_MODULE_0__.device.laptop, _utils_WindowUtils__WEBPACK_IMPORTED_MODULE_0__.device.desktop);
+var CopyButton = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].button(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n  background-color: var(--glass-color);\n  color: var(--text-color);\n  height: clamp(5rem, 10vh, 11rem);\n  width: clamp(6rem, 20vw, 15rem);\n  font-size: clamp(0.7rem, 1vw, 2rem);\n  border-radius: clamp(0.4rem, 0.8vw, .9rem);\n  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);\n  transition: 0.3s;\n  cursor: pointer;\n  position: relative;\n  overflow: hidden;\n  border: none;\n  text-transform: uppercase;\n  color: var(--text-color);\n\n  &:before {\n    content: \"\";\n    position: absolute;\n    background-color: #FFFFFF26;\n    top: -40%;\n    left: 10%;\n    transform: translateY(-50%) rotate(45deg);\n    transition: .2s;\n    height: 30%;\n    width: 200%;\n  }\n\n  &:hover {\n    box-shadow: 0px 2.5px 7.5px rgba(0, 0, 0, 0.3);\n\n    &:before {\n    top: 110%;\n    left: -110%;\n    }\n  }\n"])));
+var CssTextSpan = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].span(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["\n    color: var(--dark-blue);\n    font-weight: 900;\n    text-shadow: .3px .3px 0 black;\n\n"])));
+var CssTextSpan2 = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].span(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["\n    color: var(--light-blue);\n"])));
 
 /***/ }),
 
@@ -4643,22 +4654,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   device: () => (/* binding */ device)
 /* harmony export */ });
 var size = {
-  mobileS: '320px',
-  mobileM: '375px',
-  mobileL: '425px',
+  mobile: '375px',
   tablet: '768px',
-  laptop: '1024px',
-  laptopL: '1440px',
-  desktop: '2560px'
+  desktop: '1440px'
 };
 var device = {
-  mobileS: "(min-width: ".concat(size.mobileS, ")"),
-  mobileM: "(min-width: ".concat(size.mobileM, ")"),
-  mobileL: "(min-width: ".concat(size.mobileL, ")"),
+  mobile: "(max-width: ".concat(size.mobile, ")"),
   tablet: "(min-width: ".concat(size.tablet, ")"),
-  laptop: "(min-width: ".concat(size.laptop, ")"),
-  laptopL: "(min-width: ".concat(size.laptopL, ")"),
-  desktop: "(min-width: ".concat(size.desktop, ")")
+  laptop: "(min-width: ".concat(size.desktop, ")")
 };
 
 /***/ }),

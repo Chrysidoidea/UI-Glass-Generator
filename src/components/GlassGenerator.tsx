@@ -1,4 +1,5 @@
-import React from "react";
+import React, {memo} from "react";
+
 import {
   InputRangeStyled,
   InputColorStyled,
@@ -8,7 +9,8 @@ import {
 import { useGlassGeneratorContext } from "./GlassGeneratorContext";
 import { CssTextSpan, CssTextSpan2 } from "../styles/InputStyles";
 //Main control panel
-export const GlassGeneratorComponent: React.FC = () => {
+//set memo
+export const GlassGeneratorComponent: React.FC = memo(() => {
   const {
     transparency,
     settransparency,
@@ -34,6 +36,7 @@ export const GlassGeneratorComponent: React.FC = () => {
     ${outline !== 0 ? `border: ${borderConverted};` : ""}
     `;
 
+  
   const handleCopy = () => {
     const textToCopy = cssContent.replace(/^\s+|\s+$/gm, "");
 
@@ -46,16 +49,16 @@ export const GlassGeneratorComponent: React.FC = () => {
         console.error("Unable to copy CSS content", err);
       });
   };
-  function symbolsBeforeColon(str) {
+  const symbolsBeforeColon = (str: string) => {
     const regex = /^([^:]+):/;
     const match = str.match(regex);
     return match ? match[1] + ":" : null;
-  }
-  function symbolsAfterColon(str) {
+  };
+  const symbolsAfterColon = (str: string) => {
     const regex = /:([^:]+)$/;
     const match = str.match(regex);
     return match ? match[1] : null;
-  }
+  };
 
   return (
     <>
@@ -102,11 +105,6 @@ export const GlassGeneratorComponent: React.FC = () => {
         />
       </label>
       <CssCodeWrapper>
-        {/* <div>
-          {cssContent.split("\n").map((line, index) => (
-            <span key={index}>{line}</span>
-          ))}
-        </div> */}
         <div>
           {cssContent.split("\n").map((line, index) => (
             <span key={index}>
@@ -123,4 +121,4 @@ export const GlassGeneratorComponent: React.FC = () => {
       </CssCodeWrapper>
     </>
   );
-};
+});

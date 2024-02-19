@@ -4,6 +4,7 @@ import React, {
   useContext,
   ReactNode,
   useEffect,
+  useMemo
 } from "react";
 import {
   blurConverter,
