@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import styled, { keyframes } from "styled-components";
 import { device } from "../utils/WindowUtils";
 
@@ -42,22 +42,27 @@ const GlassCube = styled.div<FallAnimationProps>`
 export const GlassCubAnimation = () => {
   const numberOfCubes = 12;
 
+  const precalculatePositionOfCubes = useMemo(() => {
+    const cubesPosition: { start: number; end: number; delay: number }[] = [];
+    for (let i = 0; i < numberOfCubes; i++) {
+      const randomXStart = Math.random() * window.innerWidth;
+      const randomXEnd = Math.random() * window.innerWidth;
+
+      cubesPosition.push({
+        start: randomXStart,
+        end: randomXEnd,
+        delay: i * 1.5,
+      });
+    }
+
+    return cubesPosition;
+  }, [numberOfCubes]);
+
   return (
     <>
-      {Array.from({ length: numberOfCubes }).map((_, index) => {
-        const randomXStart = Math.random() * window.innerWidth;
-        const randomXEnd = Math.random() * window.innerWidth;
-        const delay = index * 2;
-
-        return (
-          <GlassCube
-            key={index}
-            $start={randomXStart}
-            $end={randomXEnd}
-            $delay={delay}
-          />
-        );
-      })}
+      {precalculatePositionOfCubes.map(({ start, end, delay }) => (
+        <GlassCube key={delay} $start={start} $end={end} $delay={delay} />
+      ))}
     </>
   );
 };

@@ -1,4 +1,4 @@
-import React, {memo} from "react";
+import React, { memo, useMemo, useCallback } from "react";
 
 import {
   InputRangeStyled,
@@ -27,7 +27,8 @@ export const GlassGeneratorComponent: React.FC = memo(() => {
     setCopied,
   } = useGlassGeneratorContext();
 
-  const cssContent = `
+  const cssContent = useMemo(() => {
+    return `
     background-color: ${bGColor};
     backdrop-filter: ${blurConverted};
     -webkit-backdrop-filter: ${blurConverted};
@@ -35,9 +36,9 @@ export const GlassGeneratorComponent: React.FC = memo(() => {
     border-radius: .4rem;
     ${outline !== 0 ? `border: ${borderConverted};` : ""}
     `;
+  }, [bGColor, blurConverted, borderConverted, outline]);
 
-  
-  const handleCopy = () => {
+  const handleCopy = useCallback(() => {
     const textToCopy = cssContent.replace(/^\s+|\s+$/gm, "");
 
     navigator.clipboard
@@ -48,65 +49,82 @@ export const GlassGeneratorComponent: React.FC = memo(() => {
       .catch((err) => {
         console.error("Unable to copy CSS content", err);
       });
-  };
-  const symbolsBeforeColon = (str: string) => {
-    const regex = /^([^:]+):/;
-    const match = str.match(regex);
-    return match ? match[1] + ":" : null;
-  };
-  const symbolsAfterColon = (str: string) => {
-    const regex = /:([^:]+)$/;
-    const match = str.match(regex);
-    return match ? match[1] : null;
-  };
+  }, [cssContent, setCopied]);
 
+  const symbolsBeforeColon = useMemo(() => {
+    return (str: string) => {
+      const regex = /^([^:]+):/;
+      const match = str.match(regex);
+      return match ? match[1] + ":" : null;
+    };
+  }, []);
+  const symbolsAfterColon = useMemo(() => {
+    return (str: string) => {
+      const regex = /:([^:]+)$/;
+      const match = str.match(regex);
+      return match ? match[1] : null;
+    };
+  }, []);
+  //everything what you see below are overkill
+  const handleTransparencyChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      settransparency(parseInt(e.target.value, 10));
+    },
+    [settransparency]
+  );
+
+  const handleBlurChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setBlur(parseInt(e.target.value, 10));
+    },
+    [setBlur]
+  );
+
+  const handleColorChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setColor(e.target.value);
+    },
+    [setColor]
+  );
+  const handleOutlineChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setOutline(parseInt(e.target.value, 10));
+    },
+    [setOutline]
+  );
+  //everything what you see above are overkill
   return (
     <>
       <label>
         transparency
         <InputRangeStyled
           value={transparency}
-          onChange={(e: { target: { value: number } }) =>
-            settransparency(e.target.value)
-          }
+          onChange={handleTransparencyChange}
           id="transparency"
         />
       </label>
 
       <label>
         blur
-        <InputRangeStyled
-          value={blur}
-          onChange={(e: { target: { value: number } }) =>
-            setBlur(e.target.value)
-          }
-          id="blur"
-        />
+        <InputRangeStyled value={blur} onChange={handleBlurChange} id="blur" />
       </label>
 
       <label>
         color
-        <InputColorStyled
-          value={color}
-          onChange={(e: { target: { value: string } }) =>
-            setColor(e.target.value)
-          }
-        />
+        <InputColorStyled value={color} onChange={handleColorChange} />
       </label>
 
       <label>
         outline
         <InputRangeStyled
           value={outline.toString()}
-          onChange={(e: { target: { value: string } }) =>
-            setOutline(parseInt(e.target.value, 10))
-          }
+          onChange={handleOutlineChange}
           id="outline"
         />
       </label>
       <CssCodeWrapper>
         <div>
-          {cssContent.split("\n").map((line, index) => (
+          {cssContent.split("\n").map((line: string, index: number) => (
             <span key={index}>
               <CssTextSpan>{symbolsBeforeColon(line)}</CssTextSpan>
               <CssTextSpan2>{symbolsAfterColon(line)}</CssTextSpan2>
