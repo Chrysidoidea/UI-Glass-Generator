@@ -67,6 +67,9 @@ export const TitleWrapper = styled.div`
     @media (${device.laptop}) {
       top: -12rem;
     }
+    @media (${device.hiRes}) {
+      top: -22rem;
+    }
   }
 `;
 
@@ -89,6 +92,10 @@ export const GlassCoreExample = styled.div`
   }
   @media (${device.laptop}) {
     top: -12rem;
+  }
+
+  @media (${device.hiRes}) {
+      top: -22rem;
   }
 `;
 

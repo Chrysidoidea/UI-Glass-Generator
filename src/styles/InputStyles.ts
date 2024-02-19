@@ -69,7 +69,7 @@ export const InputRangeStyled = styled.input.attrs({ type: "range" })`
 export const CssCodeWrapper = styled.div`
   display: flex;
   margin-top: auto;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
   justify-content: space-between;
 
   & > div:first-child {
@@ -99,7 +99,7 @@ export const CopyButton = styled.button<CopyButtonType>`
   height: clamp(5rem, 10vh, 11rem);
   width: clamp(6rem, 20vw, 15rem);
   font-size: clamp(0.7rem, 1vw, 2rem);
-  border-radius: clamp(0.4rem, 0.8vw, .9rem);
+  border-radius: clamp(0.4rem, 0.8vw, 0.9rem);
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
   transition: 0.3s;
   cursor: pointer;
@@ -112,31 +112,33 @@ export const CopyButton = styled.button<CopyButtonType>`
   &:before {
     content: "";
     position: absolute;
-    background-color: #FFFFFF26;
+    /* background-color: #ffffff26; */
     top: -40%;
     left: 10%;
     transform: translateY(-50%) rotate(45deg);
-    transition: .2s;
-    height: 30%;
+    transition: 0.4s;
+    height: 40%;
     width: 200%;
+    background-color: var(--light-blue);
+    opacity: 0.1;
   }
 
   &:hover {
     box-shadow: 0px 2.5px 7.5px rgba(0, 0, 0, 0.3);
+    background-color: #395E7839;
 
     &:before {
-    top: 110%;
-    left: -110%;
+      top: 110%;
+      left: -110%;
     }
   }
 `;
 
 export const CssTextSpan = styled.span`
-    color: var(--dark-blue);
-    font-weight: 900;
-    text-shadow: .3px .3px 0 black;
-
+  color: var(--dark-blue);
+  font-weight: 900;
+  text-shadow: 0.3px 0.3px 0 black;
 `;
 export const CssTextSpan2 = styled.span`
-    color: var(--light-blue);
+  color: var(--light-blue);
 `;
