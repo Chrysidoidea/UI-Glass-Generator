@@ -20,8 +20,6 @@ const fallAnimation = keyframes<FallAnimationProps>`
 const GlassCube = styled.div<FallAnimationProps>`
   position: absolute;
   top: -8rem;
-  /* width: 5rem;
-  height: 4rem; */
   height: clamp(10rem, 10vh, 20rem);
   width: clamp(10rem, 10vw, 21rem);
   border-radius: 0.4rem;
@@ -34,13 +32,6 @@ const GlassCube = styled.div<FallAnimationProps>`
   background-color: var(--dynamic-bg-color);
   backdrop-filter: var(--dynamic-backdrop-filter);
   border: var(--dynamic-border);
-
-  /* @media ${device.laptop} {
-    width: 7rem;
-    height: 6rem;
-    width: clamp(6rem, 30vw, 21rem);
-  height: clamp(9rem, 30vh, 20rem);
-  } */
 `;
 //Animated Cubes generator
 export const GlassCubAnimation = () => {

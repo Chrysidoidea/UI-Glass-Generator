@@ -10,15 +10,16 @@ const waveTwoSvg = `
 export const AppStyled = styled.div`
   min-height: 100dvh;
   width: 100vw;
-  padding-top: 2rem;
   background: var(--background-gradient);
   display: grid;
   place-content: center;
   color: var(--text-color);
   position: relative;
-  overflow-x: hidden;
-  overflow-y: scroll;
+  overflow: hidden;
   z-index: 0;
+  @media (${device.tablet}) {
+      padding-top: 1rem;
+  }
 `;
 
 //Main Page Bottom Waves
@@ -62,13 +63,10 @@ export const TitleWrapper = styled.div`
     transform: translateX(-50%);
 
     @media (${device.tablet}) {
-      top: -9rem;
-    }
-    @media (${device.laptop}) {
-      top: -12rem;
-    }
-    @media (${device.hiRes}) {
-      top: -22rem;
+      top: -8rem;
+  } 
+  @media (${device.hiRes}) {
+      top: -15rem;
     }
   }
 `;
@@ -88,15 +86,11 @@ export const GlassCoreExample = styled.div`
   border: var(--dynamic-border);
 
   @media (${device.tablet}) {
-    top: -9rem;
-  }
-  @media (${device.laptop}) {
-    top: -12rem;
-  }
-
+      top: -8rem;
+  } 
   @media (${device.hiRes}) {
-      top: -22rem;
-  }
+      top: -15rem;
+    }
 `;
 
 //Main wrapper for Glass Generator

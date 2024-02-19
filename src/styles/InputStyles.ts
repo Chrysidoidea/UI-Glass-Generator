@@ -112,7 +112,6 @@ export const CopyButton = styled.button<CopyButtonType>`
   &:before {
     content: "";
     position: absolute;
-    /* background-color: #ffffff26; */
     top: -40%;
     left: 10%;
     transform: translateY(-50%) rotate(45deg);
