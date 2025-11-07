@@ -5,7 +5,7 @@ module.exports = {
     mode: "development",
     entry: ["@babel/register" , "./index.tsx"],
     output: {
-        path: path.resolve(__dirname, "dist"),
+        path: path.resolve(__dirname, "build"),
         filename: "index_bundle.js"
     },
     resolve: {
