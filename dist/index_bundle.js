@@ -41873,7 +41873,7 @@ function _taggedTemplateLiteral(e, t) { return t || (t = e.slice(0)), Object.fre
 
 var fallAnimation = (0,styled_components__WEBPACK_IMPORTED_MODULE_1__.keyframes)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    0% {\n        transform:  translateY(-120vh) translateX(var(--startX, 0px)) ;  \n    }\n    100% {\n\t\ttransform: translateY(120vh) translateX(var(--endX, 0px)) ;\n    }\n"])));
 //Falling background cubes
-var GlassCube = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  position: absolute;\n  top: -8rem;\n  height: clamp(10rem, 10vh, 20rem);\n  width: clamp(10rem, 10vw, 21rem);\n  border-radius: 0.4rem;\n  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\n  animation: ", " 11s linear infinite;\n  animation-delay: ", "s;\n  --startX: ", "px;\n  --endX: ", "px;\n  z-index: -1;\n  background-color: var(--dynamic-bg-color);\n  backdrop-filter: var(--dynamic-backdrop-filter);\n  border: var(--dynamic-border);\n"])), fallAnimation, function (props) {
+var GlassCube = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  position: absolute;\n  top: -12rem;\n  height: clamp(10rem, 10vh, 20rem);\n  width: clamp(10rem, 10vw, 21rem);\n  border-radius: 0.4rem;\n  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\n  animation: ", " 11s linear infinite;\n  animation-delay: ", "s;\n  --startX: ", "px;\n  --endX: ", "px;\n  z-index: -1;\n  background-color: var(--dynamic-bg-color);\n  backdrop-filter: var(--dynamic-backdrop-filter);\n  border: var(--dynamic-border);\n"])), fallAnimation, function (props) {
   return props.$delay;
 }, function (props) {
   return props.$start;

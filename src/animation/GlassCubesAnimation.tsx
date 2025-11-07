@@ -19,7 +19,7 @@ const fallAnimation = keyframes<FallAnimationProps>`
 //Falling background cubes
 const GlassCube = styled.div<FallAnimationProps>`
   position: absolute;
-  top: -8rem;
+  top: -12rem;
   height: clamp(10rem, 10vh, 20rem);
   width: clamp(10rem, 10vw, 21rem);
   border-radius: 0.4rem;
